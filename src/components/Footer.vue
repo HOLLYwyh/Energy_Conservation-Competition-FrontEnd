@@ -14,13 +14,14 @@ export default {
 .wrapper{
   position:absolute;
   width:100%;
-  min-height:46%;
+  min-height:10%;
   left: 0;
 }
 :root{
   --footer-height: 50px;
   }
   .footer {
+    z-index: 1000;
     position: absolute;
     left:0;
     bottom: 0;

@@ -4,12 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
+import * as echarts from 'echarts'
+import VueParticles from 'vue-particles'
 
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(ElementUI)
+Vue.use(VueParticles)
 
 Vue.config.productionTip = false
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({
