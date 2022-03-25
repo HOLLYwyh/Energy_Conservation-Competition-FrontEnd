@@ -3,7 +3,8 @@
   <div>
     <img style="width:100%;height: 65px;top:0;left:0;position:absolute;z-index: 1000;" src="@/assets/navBar/background.png">
     <div >
-      <img style="position: absolute;height: 65px;left: 10%;top:0;z-index: 2000;" src="@/assets/navBar/words1.png" @click="$router.push('/')"/>
+      <img style="position: absolute;left: 10%;width: 659px;height: 157px;top:-50px;z-index: 2000;" src="@/assets/navBar/words10.png" @click="$router.push('/')"/>
+<!--      <img style="position: absolute;height: 65px;left: 10%;top:0;z-index: 2000;" src="@/assets/navBar/words.png" @click="$router.push('/')"/>-->
         <div class = "nav" style="z-index: 1000;">
           <ul class="nav-content" style="justify-content: right">
             <li class="icon iconfont " style="color: silver;margin-top: -8px"></li>
@@ -30,8 +31,9 @@ export default {
       }, {
         name: '企业联合'
       }, {
-        name: '数据大屏'
-      }]
+        name: '数据平台'
+      }],
+      lastItem: ''
     }
   },
   methods: {
@@ -44,8 +46,8 @@ export default {
         this.$router.push({path: 'policy'})
       } else if (item.name === '企业联合') {
         this.$router.push({path: 'company'})
-      } else if (item.name === '数据大屏') {
-        this.$router.push({path: '/'})
+      } else if (item.name === '数据平台') {
+        this.$router.push({path: '/screen'})
       }
     }
   }

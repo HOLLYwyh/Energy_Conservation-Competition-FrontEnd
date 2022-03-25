@@ -4,7 +4,7 @@
     <NavBar/>
     <!--顶部图片部分-->
     <div style="display:flex;flex-shrink: 0;justify-content:center;margin-top: 100px">
-      <img style="float: left;z-index: 100;" src="@/assets/swiper/ScienceIntroduction.jpg" />
+      <img style="float: left;z-index: 100;width: 509px;height: 339px" src="@/assets/swiper/kepu.png" />
       <div style="display:flex;flex-shrink: 0;z-index: 100;">
         <div class="box-body">
           <div class="box-title">科普简介</div>

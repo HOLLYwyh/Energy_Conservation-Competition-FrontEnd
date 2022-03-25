@@ -88,6 +88,11 @@ export default {
 }
 .box-info{
   margin-top: 70px;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  text-indent: 2em;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 .button{
   top: 100px;

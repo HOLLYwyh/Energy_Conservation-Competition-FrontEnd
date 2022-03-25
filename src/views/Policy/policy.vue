@@ -4,11 +4,14 @@
     <NavBar/>
     <!--顶部图片部分-->
     <div style="display:flex;flex-shrink: 0;justify-content:center;margin-top: 100px">
-      <img style="float: left;z-index: 100;" src="@/assets/swiper/PolicySimulation.jpg" />
+      <img style="float: left;z-index: 100;" src="@/assets/swiper/zhence.png" />
       <div style="display:flex;flex-shrink: 0;z-index: 100;">
         <div class="box-body">
           <div class="box-title">相关政策</div>
-          <div class="box-info">近年来，越来越多的政策都把多式联运发展纳入到了规划之中。多式联运与节能减排的关系也越来越紧密。</div>
+          <div class="box-info">近年来，越来越多的政策都把多式联运发展纳入到了规划之中。多式联运与节能减排的关系也越来越紧密。
+            大力发展货物多式联运。推进大宗货物和集装箱铁水联运系统建设，扩大铁水联运规模。以长江干线、西江航运干线为重点，提升江海联运组织水平。
+            加快推进多式联运“一单制”，创新运单互认标准与规范，推动国际货运单证信息交换，探索国际铁路电子提单，逐步普及集装箱多式联运电子运单。
+            等政策也显得愈来愈重要。</div>
         </div>
       </div>
     </div>
@@ -16,8 +19,7 @@
     <div style="display: flex;flex-shrink: 0;justify-content:center">
       <!--内容介绍-->
       <div class="content-left-body">
-        <div>
-          <div class="policy-title">政策详情</div>
+        <div style="margin-top: -40px">
           <el-card v-for="(item , index) in list"  v-bind:key="index" class="card" :id="index">
             <div class="content-left-title">{{item.title}}</div>
             <div style="text-align: center;margin-top: 5px">{{item.department}}</div>
@@ -28,6 +30,7 @@
       </div>
       <!--右边导航-->
       <div class="content-right-body">
+        <div class="policy-title">政策详情</div>
         <div class="content-right-list"><a style="text-decoration: none;display: block;text-align:left" href="#0">&nbsp;&nbsp;1.《“十四五”现代综合交通运输体系发展规划》</a></div>
         <div class="content-right-list"><a style="text-decoration: none;display: block;text-align:left" href="#1">&nbsp;&nbsp;2.《推进多式联运发展优化调整运输结构工作方案（2021—2025 年）》</a></div>
         <div class="content-right-list"><a style="text-decoration: none;display: block;text-align:left" href="#2">&nbsp;&nbsp;3.《综合运输服务“十四五”发展规划》</a></div>
@@ -152,12 +155,12 @@ export default {
 /*左侧正文*/
 .content-left-body{
   z-index: 100;
-  margin-top: 30px;
+  margin-top: 47px;
   padding: 1px 0;
   height: 1000px;
   width: 1000px;
   max-height: 2000px;
-  background-color: snow;
+  /*background-color: snow;*/
   overflow: auto;
 }
 .card{
@@ -180,7 +183,6 @@ export default {
   margin-top: 20px;
 }
 .policy-title{
-  margin-top: 20px;
   text-align: center;
   font-size: 32px;
   font-weight: bolder;

@@ -4,14 +4,14 @@
     <NavBar/>
     <!-- 首页轮播图 -->
     <div style="margin-top: 50px">
-      <el-carousel :interval="4000"  style="top: 20px" :height="carouselHeight">
+      <el-carousel :interval="3000"  style="top: 5px" :height="carouselHeight">
         <el-carousel-item v-for="(item, index) in swiperList" :key="index">
           <img :src="item.picImg"/>
         </el-carousel-item>
       </el-carousel>
     </div>
     <!--科普简介-->
-    <div class="post-container">
+    <div class="post-container" style="margin-top: -80px">
       <div class="wrap">
         <div class="post-box">
           <div class="box-title">
@@ -21,7 +21,7 @@
             <div style="display: flex;justify-content: center">
               <div class="post">
                 <el-card class="card">
-                  <img src="@/assets/home/ScienceIntroduction.jpg" class="company-img" @click="$router.push('/introduction')"/>
+                  <img src="@/assets/home/kepu.png" style="width:221px;height:147px" class="company-img" @click="$router.push('/introduction')"/>
                   <div style="margin-top: 30px" @click="$router.push('/introduction')">科普视频</div>
                 </el-card>
               </div>
@@ -37,43 +37,17 @@
                   <div style="margin-top: 40px" @click="handlePolicyClick(1)">国务院：推进多式联运发展 促进节能减排降碳</div>
                 </el-card>
               </div>
-              <div class="post">
-               <el-card class="card">
-                 <img src="@/assets/home/Carbon_Neutral.jpg" class="company-img" @click="handlePolicyClick(2)"/>
-                 <div style="margin-top: 30px" @click="handlePolicyClick(2)">什么是碳中和</div>
-               </el-card>
-              </div>
+<!--              <div class="post">-->
+<!--               <el-card class="card">-->
+<!--                 <img src="@/assets/home/Carbon_Neutral.jpg" class="company-img" @click="handlePolicyClick(2)"/>-->
+<!--                 <div style="margin-top: 30px" @click="handlePolicyClick(2)">什么是碳中和</div>-->
+<!--               </el-card>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!--相关新闻-->
-<!--    <div class="post-container">-->
-<!--      <div class="wrap">-->
-<!--        <div class="post-box">-->
-<!--          <div class="box-title">-->
-<!--            <el-button type="text" class="category">相关新闻</el-button>-->
-<!--          </div>-->
-<!--          <div class="box-body">-->
-<!--            <div style="display: flex;justify-content: center">-->
-<!--              <div class="post">-->
-<!--                <el-card class="card">这里是视频介绍</el-card>-->
-<!--              </div>-->
-<!--              <div class="post">-->
-<!--                <el-card class="card">这里是视频介绍</el-card>-->
-<!--              </div>-->
-<!--              <div class="post">-->
-<!--                <el-card class="card">这里是视频介绍</el-card>-->
-<!--              </div>-->
-<!--              <div class="post">-->
-<!--                <el-card class="card">这里是视频介绍</el-card>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <!--相关政策-->
     <div class="post-container">
       <div class="wrap">
@@ -101,12 +75,12 @@
                   <div class="policy-content" @click="$router.push('/policy')">到2025年，“全国123出行交通圈”（都市区1小时通勤、城市群2小时通达、主要城市3小时覆盖）和“全球123快货物流圈”（国内1天送达、周边国家2天送达、全球主要城市3天送达）加快构建...</div>
                 </el-card>
               </div>
-              <div class="post">
-                <el-card class="card">
-                  <div class="policy-title" @click="$router.push('/policy')">《推动交通运输领域新型基础设施建设的指导意见》</div>
-                  <div class="policy-content" @click="$router.push('/policy')">智慧枢纽。推进综合客运枢纽智能化升级，推动旅客联程运输服务设施建设，鼓励建设智能联程导航、自助行李直挂、票务服务、安检互认、标识引导...</div>
-                </el-card>
-              </div>
+<!--              <div class="post">-->
+<!--                <el-card class="card">-->
+<!--                  <div class="policy-title" @click="$router.push('/policy')">《推动交通运输领域新型基础设施建设的指导意见》</div>-->
+<!--                  <div class="policy-content" @click="$router.push('/policy')">智慧枢纽。推进综合客运枢纽智能化升级，推动旅客联程运输服务设施建设，鼓励建设智能联程导航、自助行李直挂、票务服务、安检互认、标识引导...</div>-->
+<!--                </el-card>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -121,28 +95,28 @@
           </div>
           <div class="box-body">
             <div style="display:flex;justify-content: center;">
-              <div class="post">
+              <div class="post1">
                 <el-card style="height: 250px;width: 250px;">
                   <img src="@/assets/home/CIMC.png" class="company-img" style="margin-top: 20px;margin-left: 50px"/>
                   <div style="margin-top: 40px">中集多式联运发展有限公司</div>
                   <el-button type="text" class="company-button" @click="toCompanyDetail(0)">查看详情</el-button>
                 </el-card>
               </div>
-              <div class="post">
+              <div class="post1">
                 <el-card class="card">
                   <img src="@/assets/home/winjoinit.png" class="company-img" style="margin-top: 20px;margin-left: 20px"/>
                   <div style="margin-top: 35px">上海文景信息科技有限公司</div>
                   <el-button type="text" class="company-button" @click="toCompanyDetail(1)">查看详情</el-button>
                 </el-card>
               </div>
-              <div class="post">
+              <div class="post1">
                 <el-card class="card">
                   <img src="@/assets/home/SinOcean.png" class="company-img" style="margin-top: 20px;margin-left: 20px"/>
                   <div style="margin-top: 40px">中海通物流股份有限公司</div>
                   <el-button type="text" class="company-button" @click="toCompanyDetail(2)">查看详情</el-button>
                 </el-card>
               </div>
-              <div class="post">
+              <div class="post1">
                 <el-card class="card">
                   <img src="@/assets/home/supertrans.png" class="company-img" style="margin-top: -17px;margin-left: 10px"/>
                   <div style="margin-top: -5px">中航捷运国际物流有限公司</div>
@@ -154,21 +128,6 @@
         </div>
       </div>
     </div>
-    <!--数据大屏-->
-<!--    <div class="post-container">-->
-<!--      <div class="wrap">-->
-<!--        <div class="post-box">-->
-<!--          <div class="box-title">-->
-<!--            <el-button type="text" class="category" @click="$router.push('/about')">关于我们</el-button>-->
-<!--          </div>-->
-<!--          <div class="box-body">-->
-<!--            <div class="post"></div>-->
-<!--            <div class="post"></div>-->
-<!--            <div class="post"></div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
     <!--底部栏-->
     <Footer/>
     <!--返回顶部-->
@@ -191,7 +150,7 @@ export default {
   props: {
     carouselHeight: {
       type: String,
-      default: '660px'
+      default: '800px'
     }
   },
   data () {
@@ -218,7 +177,7 @@ export default {
 
 <style scoped>
 .post-container{
-  margin: 2.5rem;
+  margin-top: 80px;
   word-wrap: break-word;
   display: flex;
   justify-content: center;
@@ -253,6 +212,14 @@ export default {
 }
 
 .post{
+  display: inline-block;
+  vertical-align: top;
+
+  width: 20rem;
+  flex-shrink: 0;
+  margin-top: 30px;
+}
+.post1{
   display: inline-block;
   vertical-align: top;
 
