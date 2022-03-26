@@ -2,9 +2,9 @@
   <div id="center">
     <div class="up" style="margin-top: 10px">
       <div class="bg-color-black item" v-for="item in titleItem" :key="item.title">
-        <p class="ml-3 colorBlue fw-b" style="width:3.25rem" >{{item.title}}</p>
+        <p class="ml-3 colorBlue fw-b" style="width:3.25rem;margin-left: -20px;margin-top: -5px" >{{item.title}}</p>
         <div>
-          <dv-digital-flop :config="item.number" style="width:1.25rem;height:.625rem;margin-left: 20px" />
+          <dv-digital-flop :config="item.number" style="width:1.25rem;height:.625rem;margin-left: 40px" />
         </div>
       </div>
     </div>

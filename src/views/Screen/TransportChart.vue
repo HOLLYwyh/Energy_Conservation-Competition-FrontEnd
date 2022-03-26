@@ -9,12 +9,12 @@
           <div class="rc1-chart-container" style="display: grid;grid-template-rows:  40% 60%">
             <div style="display: grid;grid-template-columns:  40% 40%">
             <div style="margin-top: 20px;">
-              <p class="ml-3 colorBlue fw-b" style="margin-left:20px;width:3.25rem;font-size: 18px" >总减排率</p>
-              <dv-water-level-pond :config="config2" style="margin-top:10px;width:120px;height:60px" />
+              <p class="ml-3 colorBlue fw-b" style="margin-left:10px;width:3.25rem;font-size: 18px" >总减排率</p>
+              <dv-water-level-pond :config="config2" style="margin-top:10px;width:120px;height:60px;margin-left: 50px" />
             </div>
               <div style="margin-top: 20px;">
-                <p class="ml-3 colorBlue fw-b" style="margin-left:20px;width:3.25rem;font-size: 18px" >运价涨幅</p>
-                <dv-water-level-pond :config="config3" style="margin-top:10px;width:120px;height:60px" />
+                <p class="ml-3 colorBlue fw-b" style="margin-left:10px;width:3.25rem;font-size: 18px" >运价涨幅</p>
+                <dv-water-level-pond :config="config3" style="margin-top:10px;width:120px;height:60px;margin-left: 50px" />
               </div>
             </div>
               <div class="d-flex jc-center">
