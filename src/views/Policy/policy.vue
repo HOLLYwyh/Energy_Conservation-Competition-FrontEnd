@@ -186,6 +186,7 @@ export default {
   text-align: center;
   font-size: 32px;
   font-weight: bolder;
+  margin-top: 10px;
 }
 .content-left-title{
   font-size: 20px;
