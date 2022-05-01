@@ -7,19 +7,116 @@
         </span>
         <div class="d-flex">
           <div class="rc1-chart-container" style="display: grid;grid-template-rows:  40% 60%">
-            <div style="display: grid;grid-template-columns:  40% 40%">
-            <div style="margin-top: 20px;">
-              <p class="ml-3 colorBlue fw-b" style="margin-left:10px;width:3.25rem;font-size: 18px" >总减排率</p>
-              <dv-water-level-pond :config="config2" style="margin-top:10px;width:120px;height:60px;margin-left: 50px" />
+            <div>
+              <el-button style="margin-top: 10px;margin-left: 20px" type="success" @click="dialogVisible = true">环境参数设置</el-button>
+              <el-dialog title="环境参数设置" :visible.sync="dialogVisible" width="30%">
+                <el-form ref="form" :model="form" label-width="80px" :label-position="labelPosition">
+                  <el-form-item>
+                    <span slot="label" style="margin-left: -10px">
+                      <span style="font-size: 12px;margin-left: 16px">目标减排率</span>
+                    </span>
+                    <el-select v-model="simpleValue" placeholder="请选择" style="margin-left: -20px">
+                      <el-option  v-for="item in simpleOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item>
+                    <span slot="label" style="margin-left: -10px">
+                      <span style="font-size: 12px;margin-left: 16px">目标减排率</span>
+                    </span>
+                    <el-checkbox-group v-model="checkedOptions">
+                      <el-checkbox v-for="city in multiOptions" :label="city" :key="city">{{city}}</el-checkbox>
+                    </el-checkbox-group>
+                  </el-form-item>
+                  <el-form-item>
+                    <el-upload
+                      class="upload-demo"
+                      action="https://jsonplaceholder.typicode.com/posts/"
+                      :on-preview="handlePreview"
+                      :on-remove="handleRemove"
+                      :before-remove="beforeRemove"
+                      multiple
+                      :limit="3"
+                      :on-exceed="handleExceed"
+                      :file-list="fileList">
+                      <el-button size="small" type="primary" style="margin-left: -55px">上传OD矩阵/参数列表</el-button>
+                    </el-upload>
+                  </el-form-item>
+                </el-form>
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handleInput">确 定</el-button>
+              </el-dialog>
             </div>
-              <div style="margin-top: 20px;">
-                <p class="ml-3 colorBlue fw-b" style="margin-left:10px;width:3.25rem;font-size: 18px" >运价涨幅</p>
-                <dv-water-level-pond :config="config3" style="margin-top:10px;width:120px;height:60px;margin-left: 50px" />
+            <!--修改部分-->
+            <div style="margin-top: -30px">
+              <el-form ref="form" :model="form" label-width="80px" :label-position="labelPosition">
+                <el-form-item>
+                  <span slot="label" style="margin-left: -10px">
+                    <span style="color: whitesmoke;font-size: 12px;margin-left: 16px">目标减排率</span>
+                  </span>
+                  <el-select v-model="selectValue" placeholder="请选择" style="margin-left: -20px">
+                    <el-option  v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-form>
+              <el-form ref="form" :model="form" :inline="true" label-width="80px" :label-position="labelPosition">
+                <el-form-item style="margin-top: -30px;margin-left: -30px">
+                  <span slot="label">
+                    <span style="color: whitesmoke;font-size: 12px;">最小补贴</span>
+                  </span>
+                  <el-input style="width: 120px;height: 10px" v-model="form.minAllowance">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">元</i>
+                  </el-input>
+                </el-form-item>
+                <el-form-item style="margin-top: -30px;margin-left: -20px">
+                  <span slot="label">
+                    <span style="color: whitesmoke;font-size: 12px">最大补贴</span>
+                  </span>
+                  <el-input style="width: 120px;height: 10px" v-model="form.maxAllowance">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">元</i>
+                  </el-input>
+                </el-form-item>
+              </el-form>
+              <el-form ref="form" :model="form" :inline="true" label-width="80px" :label-position="labelPosition">
+                <el-form-item style="margin-top: -30px;margin-left: -30px">
+                  <span slot="label">
+                    <span style="color: whitesmoke;font-size: 12px">最小税收</span>
+                  </span>
+                  <el-input style="width: 120px;height: 10px" v-model="form.minRevenue">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">元</i>
+                  </el-input>
+                </el-form-item>
+                <el-form-item style="margin-top: -30px;margin-left: -20px">
+                  <span slot="label">
+                    <span style="color: whitesmoke;font-size: 12px">最大税收</span>
+                  </span>
+                  <el-input style="width: 120px;height: 10px" v-model="form.maxRevenue" :rows="10">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">元</i>
+                  </el-input>
+                </el-form-item>
+              </el-form>
+              <el-form ref="form" :model="form" label-width="100px" :label-position="labelPosition" :inline="true">
+                <el-form-item style="margin-top: -30px;margin-left: -30px">
+                  <span slot="label">
+                    <span style="color: whitesmoke;font-size: 12px">预算</span>
+                  </span>
+                  <el-input style="width: 220px" v-model="form.budget">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">元</i>
+                  </el-input>
+                </el-form-item>
+              </el-form>
+              <el-form ref="form" :model="form" label-width="100px" :inline="true" :label-position="labelPosition">
+                <el-form-item style="margin-top: -30px;margin-left: -30px">
+                  <span slot="label" style="margin-left: -5px">
+                    <span style="color: whitesmoke;font-size: 12px">最大运价涨幅</span>
+                  </span>
+                  <el-input style="width: 220px" v-model="form.increase">
+                    <i slot="suffix" style="font-style: normal;color: #000000;font-weight: bold;line-height: 45px;">%</i>
+                  </el-input>
+                </el-form-item>
+              </el-form>
+              <div style="margin-top: -15px;margin-left: -10px">
+                <el-button style="background-color: cornflowerblue" @click="handleResult">政策模拟</el-button>
               </div>
-            </div>
-              <div class="d-flex jc-center">
-                <dv-conical-column-chart :config="config" style="margin-left:-90px;margin-top:8px;width:300px;height:140px;" />
-
             </div>
 
           </div>
@@ -34,6 +131,7 @@
 </template>
 
 <script>
+const m = ['运输网络扩容政策', '补贴政策', '航线网络设计政策', '收费政策']
 export default {
   data () {
     return {
@@ -45,39 +143,41 @@ export default {
         data: [9.2],
         shape: 'roundRect'
       },
-      config: {
-        data: [
-          {
-            name: '黄华',
-            value: 1050
-          },
-          {
-            name: '沧州',
-            value: 900
-          },
-          {
-            name: '天津',
-            value: 400
-          },
-          {
-            name: '威海',
-            value: 850
-          },
-          {
-            name: '大连',
-            value: 450
-          }
-
-        ],
-        img: [
-          require('@/assets/screen/3.png'),
-          require('@/assets/screen/1.png'),
-          require('@/assets/screen/2.png'),
-          require('@/assets/screen/2.png'),
-          require('@/assets/screen/2.png')
-        ],
-        showValue: true
-      }
+      options: [{
+        value: '10%',
+        label: '10%'
+      }, {
+        value: '20%',
+        label: '20%'
+      }, {
+        value: '30%',
+        label: '30%'
+      }],
+      form: {
+        minAllowance: '',
+        maxAllowance: '',
+        minRevenue: '',
+        maxRevenue: '',
+        budget: '',
+        increase: ''
+      },
+      selectValue: '',
+      labelPosition: 'right',
+      simpleOptions: [{
+        value: 'Maximal profit',
+        label: '班轮公司收益最大'
+      }, {
+        value: 'Minimum total',
+        label: '区域碳排放总量最小'
+      }, {
+        value: 'Minimum cost',
+        label: '区域综合运输成本最小'
+      }],
+      dialogVisible: false,
+      simpleValue: '',
+      checkedOptions: [],
+      multiOptions: m,
+      fileList: []
     }
   },
   components: {
@@ -85,11 +185,31 @@ export default {
   mounted () {
   },
   methods: {
-
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
+    },
+    handleExceed (files, fileList) {
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+    },
+    beforeRemove (file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`)
+    },
+    handleInput () {
+      this.dialogVisible = false
+    },
+    handleResult () {
+    }
   }
 }
 </script>
-
+<style scoped>
+.el-form-item >>> .el-input__inner {
+  height: 25px;
+}
+</style>
 <style lang="scss">
 #centreLeft1 {
   padding: 0.2rem;

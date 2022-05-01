@@ -24,7 +24,8 @@
             <div class="content-left-title">{{item.title}}</div>
             <div style="text-align: center;margin-top: 5px">{{item.department}}</div>
             <div style="text-align: center;margin-top: 5px">{{item.time}}</div>
-            <div class="content-left-content" v-html="item.content"></div>
+            <div class="content-left-content" v-if="item.id===1||item.id===4||item.id===5||item.id===7" v-html="item.content"></div>
+            <div class="content-left-content1" v-if="item.id===0||item.id===2||item.id===3||item.id===6" v-html="item.content"></div>
           </el-card>
         </div>
       </div>
@@ -150,7 +151,6 @@ export default {
   text-justify: inter-ideograph;
   text-indent: 2em;
   padding: 2px;
-  font-family: Arial,serif;
 }
 /*左侧正文*/
 .content-left-body{
@@ -160,7 +160,7 @@ export default {
   height: 1000px;
   width: 1000px;
   max-height: 2000px;
-  /*background-color: snow;*/
+  text-justify: inter-ideograph;
   overflow: auto;
 }
 .card{
@@ -176,7 +176,6 @@ export default {
   padding: 1px 0;
   height: 500px;
   width: 300px;
-  background-color: aliceblue;
 }
 .content-right-list{
   text-align: center;
@@ -198,6 +197,13 @@ export default {
   text-align: justify;
   text-justify: inter-ideograph;
   padding: 2px;
-  font-family: Arial,serif;
+}
+.content-left-content1{
+  margin-top: 15px;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  padding: 2px;
+  text-justify: inter-ideograph;
+  text-indent: 2em;
 }
 </style>

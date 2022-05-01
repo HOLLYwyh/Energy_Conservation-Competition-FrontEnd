@@ -21,14 +21,18 @@
         <div>
           <el-card v-for="(item , index) in list"  v-bind:key="index" class="card" :id="index">
             <div style="display: flex;justify-content: center">
-                <img :src= "item.img" style="height: 70px;width: 150px;margin-top: 60px"/>
+                <img :src= "item.img" style="height: 70px;width: 150px;margin-top: 60px;margin-left: 35px"/>
                 <div>
                   <div class="company-title">{{item.title}}</div>
                   <div class="company-content">{{item.content}}</div>
                 </div>
-<!--                <img :src="item.certifyImg" style="height: 100px;width: 100px"/>-->
             </div>
-            <el-button type="text" class="button" @click="toCompanyDetail(item.id)">查看详情</el-button>
+            <div style="display: flex;flex-direction: row-reverse">
+              <div style="display: flex;">
+                <el-button type="text" class="button" @click="toCompanyDetail(item.id)">查看详情</el-button>
+              </div>
+            </div>
+
           </el-card>
         </div>
       </div>
@@ -88,7 +92,7 @@ export default {
           id: 3,
           title: '中航捷运国际物流有限公司',
           img: require('@/assets/rank/supertrans_1.png'),
-          content: '青岛中航捷运国际物流有限公司于2015年12月02日成立。法定代表人冯会真，公司经营范围包括：国际货运代理，代理报关，报检，仓储服务（不含危险品），货物装卸服务，物流信息咨询，货物及技术进出口（法律、行政法规禁止的项目除外，法律、行政法规限制的项目取得许可后方可经营）等。',
+          content: '青岛中航捷运国际物流有限公司于2015年12月02日成立。公司经营范围包括：国际货运代理，代理报关，报检，仓储服务（不含危险品），货物装卸服务，物流信息咨询，货物及技术进出口等。',
           certifyImg: require('@/assets/rank/certified.jpg')
         }]
     }
@@ -128,7 +132,6 @@ export default {
   text-justify: inter-ideograph;
   text-indent: 2em;
   padding: 2px;
-  font-family: Arial,serif;
 }
 /*左侧正文*/
 .content-left-body{
@@ -152,21 +155,23 @@ export default {
   font-weight: bolder;
 }
 .company-title{
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   font-size: 24px;
+  margin-left: -10px;
 }
 .company-content{
   margin-top: 50px;
-  margin-left: 20px;
+  margin-left: 30px;
   margin-right: 20px;
   text-justify: inter-ideograph;
   text-indent: 2em;
+  text-align: left;
 }
 .button {
   padding: 0;
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 40px;
+  /*text-align: center;*/
 }
 /*右侧正文*/
 .content-right-body{
@@ -176,7 +181,6 @@ export default {
   padding: 1px 0;
   height: 500px;
   width: 300px;
-  background-color: aliceblue;
 }
 .content-right-list{
   text-align: center;

@@ -81,7 +81,6 @@ export default {
     text-justify: inter-ideograph;
     text-indent: 2em;
     padding: 2px;
-    font-family: Arial,serif;
   }
   /*左侧正文*/
   .content-left-body{
@@ -96,7 +95,6 @@ export default {
     margin-top: 40px;
     font-size: 24px;
     font-weight: bolder;
-    font-family: SimSun-ExtB,serif;
     text-align: center;
   }
   .video{
@@ -116,7 +114,7 @@ export default {
     padding: 1px 0;
     height: 500px;
     width: 300px;
-    background-color: aliceblue;
+    /*background-color: whitesmoke;*/
   }
   .popular-science-title{
     margin-top: 20px;

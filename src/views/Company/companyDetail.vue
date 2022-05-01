@@ -117,7 +117,6 @@ export default {
   text-align: center;
   font-size: 24px;
   font-weight: bolder;
-  font-family: SimSun-ExtB,serif;
 }
 .text-content{
   margin-left: 25px;
@@ -128,6 +127,5 @@ export default {
   text-justify: inter-ideograph;
   text-indent: 2em;
   padding: 2px;
-  font-family: Arial,serif;
 }
 </style>

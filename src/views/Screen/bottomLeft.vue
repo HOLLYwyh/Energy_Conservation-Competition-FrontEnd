@@ -15,6 +15,7 @@
 <script>
 import bottomLeftChart from '@/views/Screen/bottomLeftChart'
 export default {
+  props: ['message'],
   data () {
     return {}
   },

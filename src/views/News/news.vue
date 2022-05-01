@@ -78,7 +78,6 @@ export default {
   text-justify: inter-ideograph;
   text-indent: 2em;
   padding: 2px;
-  font-family: Arial,serif;
 }
 /*左侧正文*/
 .content-left-body{
