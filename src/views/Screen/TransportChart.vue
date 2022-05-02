@@ -6,14 +6,15 @@
           <icon name="chart-bar"></icon>
         </span>
         <div class="d-flex">
+
           <div class="rc1-chart-container" style="display: grid;grid-template-rows:  40% 60%">
+
             <div>
-              <el-button style="margin-top: 10px;margin-left: 20px" type="success" @click="dialogVisible = true">环境参数设置</el-button>
               <el-dialog title="环境参数设置" :visible.sync="dialogVisible" width="30%">
                 <el-form ref="form" :model="form" label-width="80px" :label-position="labelPosition">
                   <el-form-item>
                     <span slot="label" style="margin-left: -10px">
-                      <span style="font-size: 12px;margin-left: 16px">目标减排率</span>
+                      <span style="font-size: 12px;margin-left: 16px">决策目标</span>
                     </span>
                     <el-select v-model="simpleValue" placeholder="请选择" style="margin-left: -20px">
                       <el-option  v-for="item in simpleOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
@@ -21,7 +22,7 @@
                   </el-form-item>
                   <el-form-item>
                     <span slot="label" style="margin-left: -10px">
-                      <span style="font-size: 12px;margin-left: 16px">目标减排率</span>
+                      <span style="font-size: 12px;margin-left: 16px">政策约束</span>
                     </span>
                     <el-checkbox-group v-model="checkedOptions">
                       <el-checkbox v-for="city in multiOptions" :label="city" :key="city">{{city}}</el-checkbox>
@@ -47,8 +48,9 @@
               </el-dialog>
             </div>
             <!--修改部分-->
-            <div style="margin-top: -30px">
-              <el-form ref="form" :model="form" label-width="80px" :label-position="labelPosition">
+            <div style="margin-top: -65px">
+              <div style="font-size: 16px;color: white;">数据输入模块</div>
+              <el-form ref="form" :model="form" label-width="80px" :label-position="labelPosition" style="margin-top: 20px">
                 <el-form-item>
                   <span slot="label" style="margin-left: -10px">
                     <span style="color: whitesmoke;font-size: 12px;margin-left: 16px">目标减排率</span>
@@ -115,7 +117,8 @@
                 </el-form-item>
               </el-form>
               <div style="margin-top: -15px;margin-left: -10px">
-                <el-button style="background-color: cornflowerblue" @click="handleResult">政策模拟</el-button>
+                <el-button style="margin-top: 10px;margin-left: 20px;font-weight: bold" type="success" @click="dialogVisible = true">环境参数设置</el-button>
+                <el-button style="background-color: cornflowerblue;color: whitesmoke;font-weight: bold" @click="handleResult" v-loading.fullscreen.lock="fullscreenLoading">政策模拟</el-button>
               </div>
             </div>
 
@@ -135,6 +138,7 @@ const m = ['运输网络扩容政策', '补贴政策', '航线网络设计政策
 export default {
   data () {
     return {
+      fullscreenLoading: false,
       config2: {
         data: [37],
         shape: 'roundRect'
@@ -177,7 +181,8 @@ export default {
       simpleValue: '',
       checkedOptions: [],
       multiOptions: m,
-      fileList: []
+      fileList: [],
+      output: true
     }
   },
   components: {
@@ -199,8 +204,18 @@ export default {
     },
     handleInput () {
       this.dialogVisible = false
+      this.output = true
     },
     handleResult () {
+      if (this.output) {
+        // this.$forceUpdate()
+        this.$emit('change', 'test')
+        // this.fullscreenLoading = true
+        // setTimeout(() => {
+        //   this.fullscreenLoading = false
+        // }, 1000)
+        // this.$router.push('/temp')
+      }
     }
   }
 }

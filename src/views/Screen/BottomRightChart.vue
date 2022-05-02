@@ -1,14 +1,55 @@
 <template>
   <div>
-    <dv-charts :option="option" style="width:420px;height:250px;"/>
+    <dv-charts :option.sync="option" style="width:420px;height:250px;"/>
   </div>
 </template>
 
 <script>
+import {getData, getData1, getData2} from '../../data/chart'
 export default {
   name: 'BottomRightChart',
+  created () {
+    // eslint-disable-next-line no-unused-vars
+    let timer = setInterval(() => {
+      this.d = Math.random() * 1000
+      if (this.option.series[0].data[0] !== getData(0)) {
+        this.$message({
+          message: '计算完成',
+          type: 'success'
+        })
+      }
+      this.option.series[0].data[0] = getData(0)
+      this.option.series[0].data[1] = getData(1)
+      this.option.series[0].data[2] = getData(2)
+      this.option.series[0].data[3] = getData(3)
+      this.option.series[0].data[4] = getData(4)
+      this.option.series[0].data[5] = getData(5)
+      this.option.series[0].data[6] = getData(6)
+      this.option.series[1].data[0] = getData1(0)
+      this.option.series[1].data[1] = getData1(1)
+      this.option.series[1].data[2] = getData1(2)
+      this.option.series[1].data[3] = getData1(3)
+      this.option.series[1].data[4] = getData1(4)
+      this.option.series[1].data[5] = getData1(5)
+      this.option.series[1].data[6] = getData1(6)
+      this.option.series[2].data[0] = getData2(0)
+      this.option.series[2].data[1] = getData2(1)
+      this.option.series[2].data[2] = getData2(2)
+      this.option.series[2].data[3] = getData2(3)
+      this.option.series[2].data[4] = getData2(4)
+      this.option.series[2].data[5] = getData2(5)
+      this.option.series[2].data[6] = getData2(6)
+      this.option = {...this.option}
+    }, 2500)
+  },
+  // watch: {
+  //   option (newValue, oldValue) {
+  //     console.log('你好')
+  //   }
+  // },
   data () {
     return {
+      d: 1000,
       option: {
         legend: {
           top: '10%',

@@ -14,7 +14,19 @@
 
 <script>
 
+import {getNumber} from '../../data/chart'
+
 export default {
+  created () {
+    // eslint-disable-next-line no-unused-vars
+    let timer = setInterval(() => {
+      this.titleItem[0].number.number[0] = getNumber(0)
+      this.titleItem[1].number.number[0] = getNumber(1)
+      this.titleItem[0].number = {...this.titleItem[0].number}
+      this.titleItem[1].number = {...this.titleItem[1].number}
+      console.log(this.titleItem[1].number.number[0])
+    }, 2500)
+  },
   data () {
     return {
       titleItem: [

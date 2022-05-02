@@ -8,8 +8,8 @@
           <dv-decoration-10 style="width:33.3%;height:.0625rem;" />
           <div class="d-flex jc-center">
             <dv-decoration-8 :color="['#568aea', '#000000']" style="width:2.5rem;height:.625rem;" />
-            <div class="title">
-              <span class="title-text">多式联运政务数据平台</span>
+            <div class="title" style="margin-top: 20px">
+              <span style="font-size: 30px">多式联运政务数据平台</span>
               <dv-decoration-6
                 class="title-bototm"
                 :reverse="true"
@@ -25,14 +25,13 @@
           </div>
           <dv-decoration-10 style="width:33.3%;height:.0625rem; transform: rotateY(180deg);" />
         </div>
-        <span class="text" style="margin-left: 1030px">2022年03月16日 周一 12:00</span>
         <div class="body-box">
           <!-- 第三行数据 -->
           <div class="content-box">
 
             <div>
               <dv-border-box-13>
-                <TransportChart />
+                <TransportChart @change="update($event)"/>
               </dv-border-box-13>
             </div>
             <!-- 中间 -->
@@ -50,14 +49,14 @@
           <!-- 第四行数据 -->
           <div class="bototm-box">
             <dv-border-box-12>
-              <bottomLeft />
+              <bottomLeft message="hello"/>
             </dv-border-box-12>
             <dv-border-box-7>
               <PieChartFrame />
             </dv-border-box-7>
             <dv-border-box-12>
               <bottomRightNum />
-              <bottomRight />
+              <bottomRight v-if="refresh"/>
             </dv-border-box-12>
           </div>
         </div>
@@ -74,12 +73,14 @@ import bottomLeft from './bottomLeft'
 import bottomRight from './bottomRight'
 import CenterGraph from './CenterGraph'
 import bottomRightNum from './bottomRightNum'
+import {setData, setData1, setData2, setNumber} from '../../data/chart'
 // 适配flex
 import '@/common/flexible.js'
 export default {
   data () {
     return {
-      loading: true
+      loading: true,
+      refresh: true
     }
   },
   components: {
@@ -99,6 +100,16 @@ export default {
       setTimeout(() => {
         this.loading = false
       }, 500)
+    },
+    async update (value) {
+      for (let i = 0; i < 7; i++) {
+        setData(i, Math.random() * 1600)
+        setData1(i, Math.random() * 1600)
+        setData2(i, Math.random() * 1600)
+      }
+      for (let i = 0; i < 2; i++) {
+        setNumber(i, Math.random() * 300)
+      }
     }
   },
   destroyed () {
